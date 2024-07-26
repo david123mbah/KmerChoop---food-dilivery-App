@@ -20,7 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Loginpage(),
+      home:  Loginpage(
+        onTap: () {
+          
+        },
+      ),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
