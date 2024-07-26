@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/pages/homepage.dart';
 import 'package:musicapp/widgets/my_button.dart';
 import 'package:musicapp/widgets/my_textfield.dart';
 
@@ -15,6 +16,16 @@ class _LoginpageState extends State<Loginpage> {
   final TextEditingController emailController  = TextEditingController();
 
   final TextEditingController passwordController  = TextEditingController();
+
+// login method
+void login() {
+
+
+
+ // navigate to the homepage
+
+  Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
+}
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +66,7 @@ class _LoginpageState extends State<Loginpage> {
           MyButton(
             text: "Sign In", 
             onTap: () {
-
+            login();
             }
           ),
 
