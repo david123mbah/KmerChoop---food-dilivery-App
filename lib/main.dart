@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/auth/login_or_Register.dart';
 import 'package:musicapp/pages/login_page.dart';
 import 'package:musicapp/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -20,11 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  Loginpage(
-        onTap: () {
-          
-        },
-      ),
+      home: const LoginOrRegister(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
