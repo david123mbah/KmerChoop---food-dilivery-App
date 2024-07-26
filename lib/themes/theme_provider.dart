@@ -21,9 +21,4 @@ class ThemeProvider with ChangeNotifier{
       themeData = lightMode;
     }
    }
-   
-
-
-
-
 }
