@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/widgets/my_drawer.dart';
 
 
 class Homepage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Home"),),
-      drawer: Drawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
