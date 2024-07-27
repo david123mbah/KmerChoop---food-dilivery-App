@@ -16,7 +16,9 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(title: const Padding(
         padding: EdgeInsets.only(left: 75),
         child: Text("Home"),
-      ),),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      ),
       drawer: const MyDrawer(),
     );
   }
