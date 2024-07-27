@@ -18,11 +18,25 @@ class _HomepageState extends State<Homepage> {
       body: NestedScrollView(
         headerSliverBuilder:(context , innerBoxisScrolled) =>
         [
-          const MyAppbar(
+           MyAppbar(
             title: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("LOOL"),
+                Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
+                
+                // my location 
+
+
+
+
+
+
+                //  my discribtion 
+
+
+
+
+
               ],
             ), 
             child: Text("hello"))
