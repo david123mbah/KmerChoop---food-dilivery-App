@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
-                
+
                 // my location 
 
 
@@ -42,6 +42,7 @@ class _HomepageState extends State<Homepage> {
             child: Text("hello"))
           ], 
         body: Container(
+          color: Colors.blue,
 
         ),
       ),
