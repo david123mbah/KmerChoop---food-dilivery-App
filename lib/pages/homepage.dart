@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/components/my_appbar.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
 
 
@@ -13,13 +14,23 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Padding(
-        padding: EdgeInsets.only(left: 75),
-        child: Text("Home"),
+      drawer:  const MyDrawer(),
+      body: NestedScrollView(
+        headerSliverBuilder:(context , innerBoxisScrolled) =>
+        [
+          const MyAppbar(
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("LOOL"),
+              ],
+            ), 
+            child: Text("hello"))
+          ], 
+        body: Container(
+
+        ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
-      ),
-      drawer: const MyDrawer(),
     );
   }
 }
