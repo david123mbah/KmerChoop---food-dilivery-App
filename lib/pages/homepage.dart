@@ -13,7 +13,10 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home"),),
+      appBar: AppBar(title: const Padding(
+        padding: EdgeInsets.only(left: 75),
+        child: Text("Home"),
+      ),),
       drawer: const MyDrawer(),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/mydrawer_title.dart';
+import 'package:musicapp/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -33,9 +34,9 @@ class MyDrawer extends StatelessWidget {
             text: "S E T T I N G S",
             icon: Icons.settings,
             onTap: () {
-               Navigator.pop(context);
-               Navigator.push(context, MaterialPageRoute(builder: (context) => Settingpage()))
-
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Settingpage()));
             },
           ),
           const Spacer(),
@@ -44,7 +45,9 @@ class MyDrawer extends StatelessWidget {
             icon: Icons.logout,
             onTap: () {},
           ),
-          const SizedBox( height: 25,)
+          const SizedBox(
+            height: 25,
+          )
         ],
       ),
     );
