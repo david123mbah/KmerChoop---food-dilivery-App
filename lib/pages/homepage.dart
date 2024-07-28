@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_appbar.dart';
+import 'package:musicapp/components/my_discription_box.dart';
 import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
 
@@ -20,19 +21,20 @@ class _HomepageState extends State<Homepage> {
         headerSliverBuilder:(context , innerBoxisScrolled) =>
         [
            MyAppbar(
-            title: Column(
+            title:  Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
 
                 // my location 
-                 Mylocation()
+                 const Mylocation(),
 
 
 
 
 
-                //  my discribtion 
+                //  my discribtion
+                const MyDescription() 
 
 
 
@@ -40,7 +42,7 @@ class _HomepageState extends State<Homepage> {
 
               ],
             ), 
-            child: Text("hello"))
+            child: const Text("hello"))
           ], 
         body: Container(
           color: Colors.blue,
