@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_appbar.dart';
+import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
 
 
@@ -25,7 +26,7 @@ class _HomepageState extends State<Homepage> {
                 Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
 
                 // my location 
-
+                 Mylocation()
 
 
 
