@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_appbar.dart';
 import 'package:musicapp/components/my_discription_box.dart';
+import 'package:musicapp/components/my_food_tile.dart';
 import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/models/food.dart';
 import 'package:musicapp/utils/restuarant.dart';
@@ -50,12 +51,17 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(categoryMenu[index].name),
+
+
+        final food =  categoryMenu[index];
+
+
+
+        return FoodTile( food: food, onTap: () {},);
+    },
+        
         );
 
-      }
-    );
 
   }).toList();
 }
