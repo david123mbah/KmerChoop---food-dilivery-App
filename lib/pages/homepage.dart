@@ -21,15 +21,13 @@ class _HomepageState extends State<Homepage> {
         headerSliverBuilder:(context , innerBoxisScrolled) =>
         [
            MyAppbar(
-            title:  Column(
+            child:   Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
 
                 // my location 
                  const Mylocation(),
-
-
 
 
 
@@ -42,7 +40,7 @@ class _HomepageState extends State<Homepage> {
 
               ],
             ), 
-            child: const Text("hello"))
+            title: const Text("Title"))
           ], 
         body: Container(
           color: Colors.blue,
