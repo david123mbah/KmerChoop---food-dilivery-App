@@ -122,11 +122,13 @@ Addon(name: "Upgrade to All Organic Fruit", price: 2.00)
 ]
 ),
 
+// sides 
+
 // desserts
 Food(
 name: "Chocolate Lava Cake",
 description: "Warm, gooey chocolate cake with a molten chocolate center, served with vanilla ice cream",
-imagePath: "lib/assets/images/chocolate_lava_cake.jpg",
+imagePath: "lib/assets/images/choco.jpg",
 price: 7.99,
 category: FoodCategories.desserts,
 availableAddons: [
@@ -150,9 +152,9 @@ Addon(name: "Whipped Cream", price: 1.00)
 ),
 
 Food(
-name: "Triple Chocolate Ice Cream",
+name: "Triple pink Chocolate Ice Cream",
 description: "Rich and creamy chocolate ice cream with chunks of chocolate and chocolate sauce swirled throughout",
-imagePath: "lib/assets/images/chocolate_ice_cream.jpg",
+imagePath: "lib/assets/images/anime.jpg",
 price: 4.99,
 category: FoodCategories.desserts,
 availableAddons: [
@@ -165,7 +167,7 @@ Addon(name: "Whipped Cream and Cherry", price: 1.50)
 Food(
 name: "Tiramisu",
 description: "Layers of coffee-soaked ladyfingers, mascarpone cream, and cocoa powder",
-imagePath: "lib/assets/images/tiramisu.jpg",
+imagePath: "lib/assets/images/pexels-teejay-1362534.jpg",
 price: 6.49,
 category: FoodCategories.desserts,
 availableAddons: [
@@ -188,11 +190,52 @@ Addon(name: "Drizzle of Strawberry Sauce", price: 1.50)
 ]
 ),
 
+// drinks
+
+
+
 
 
 
 
  ];
+    
+
+/*
+GETTERS 
+
+*/
+
+List<Food> get menu => _menu;
+
+
+/*
+
+
+O P E R A T I O N S 
+
+*/
+
+  // add to cart 
+
+
+
+
+
+
+  // remove from cart 
+
+
+
+/*
+
+
+HELPERS
+
+
+*/
+
+
 
 
 
