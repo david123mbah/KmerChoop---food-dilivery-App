@@ -40,16 +40,17 @@ class _HomepageState extends State<Homepage>
 
   // return list of foods in given category 
 
-List<Widget> getFoodInThisCategory(List<Food> fulMenu) {
-  return FoodCategories.values.map.((category) {
-    List<Food> catgoryMenu = _filterMenuByCategory(category, fullMenu);
+List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
+  return FoodCategories.values.map((category) {
+    List<Food> categoryMenu = _filtreMenuByCategory(category, fullMenu);
 
     return ListView.builder(
 
-      itemcount: categoryMenu.length,
-      physics: NeverScrollableScrollPhysics(),
+      itemCount: categoryMenu.length,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        return ListTitle(
+        return ListTile(
           title: Text(categoryMenu[index].name),
         );
 
