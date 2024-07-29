@@ -39,7 +39,7 @@ class Food {
     Addon({
 
       required this.name,
-      required this.price
+      required this.price,
     });
   }
 
