@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:musicapp/models/food.dart';
 
 
-class Restaurant {
+class Restaurant  extends ChangeNotifier{
 
  final List<Food> _menu = [
 
@@ -227,6 +228,37 @@ O P E R A T I O N S
 
 
 
+
+
+
+
+// get total price  to cart
+
+
+
+
+
+
+// get total number of items in cart 
+
+
+
+
+
+
+// clear cart 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 
 
@@ -234,6 +266,20 @@ HELPERS
 
 
 */
+
+
+// generate receipt 
+
+
+
+
+
+// format double Value into Money 
+
+
+
+// format list of addons into a string summary
+
 
 
 
