@@ -29,6 +29,12 @@ class MyTabBar extends StatelessWidget {
             
             
           ),
+            Tab(
+            icon: Icon(Icons.person),
+
+            
+            
+          ),
 
 
         ],

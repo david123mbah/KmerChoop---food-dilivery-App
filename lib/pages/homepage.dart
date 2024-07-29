@@ -5,7 +5,6 @@ import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
 import 'package:musicapp/widgets/my_tab_bar.dart';
 
-
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -13,63 +12,65 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage>  
-with SingleTickerProviderStateMixin{
-
-  //tab controller 
+class _HomepageState extends State<Homepage>
+    with SingleTickerProviderStateMixin {
+  //tab controller
   late TabController _tabController;
-
-  void iniState() {
+  @override
+  void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
-@override
-void dispose() {
-  _tabController.dispose();
-  super.dispose();
-}
-
-
-
-
-
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer:  const MyDrawer(),
+      drawer: const MyDrawer(),
       body: NestedScrollView(
-        headerSliverBuilder:(context , innerBoxisScrolled) =>
-        [
-           MyAppbar(
+        headerSliverBuilder: (context, innerBoxisScrolled) => [
+          MyAppbar(
             title: MyTabBar(tabController: _tabController),
-            child:   Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Divider( indent: 25, endIndent: 25, color: Theme.of(context).colorScheme.secondary,),
+                Divider(
+                  indent: 25,
+                  endIndent: 25,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
 
-                // my location 
-                 const Mylocation(),
-
-
+                // my location
+                const Mylocation(),
 
                 //  my discribtion
-                const MyDescription() 
-
-
-
-
-
+                const MyDescription()
               ],
             ),
-            ), 
-           
-          ], 
-        body: Container(
-          color: Colors.blue,
-
-        ),
+          ),
+        ],
+        body: TabBarView(
+          controller: _tabController,
+          children:  [
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: ((context, index) => Text("first items")),
+            ),
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: ((context, index) => Text("Second  items")),
+            ),
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: ((context, index) => Text("Third  items")),
+            ),
+          ],
+        )
       ),
     );
   }
