@@ -3,6 +3,7 @@ import 'package:musicapp/components/my_appbar.dart';
 import 'package:musicapp/components/my_discription_box.dart';
 import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
+import 'package:musicapp/widgets/my_tab_bar.dart';
 
 
 class Homepage extends StatefulWidget {
@@ -12,7 +13,28 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<Homepage>  
+with SingleTickerProviderStateMixin{
+
+  //tab controller 
+  late TabController _tabController;
+
+  void iniState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+@override
+void dispose() {
+  _tabController.dispose();
+  super.dispose();
+}
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +43,7 @@ class _HomepageState extends State<Homepage> {
         headerSliverBuilder:(context , innerBoxisScrolled) =>
         [
            MyAppbar(
+            title: MyTabBar(tabController: _tabController),
             child:   Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -39,8 +62,9 @@ class _HomepageState extends State<Homepage> {
 
 
               ],
+            ),
             ), 
-            title: const Text("Title"))
+           
           ], 
         body: Container(
           color: Colors.blue,
