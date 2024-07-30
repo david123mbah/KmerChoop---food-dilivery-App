@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Mylocation extends StatelessWidget {
   const Mylocation({super.key});
@@ -10,8 +9,8 @@ class Mylocation extends StatelessWidget {
       
       context: context,
      builder: (context) => AlertDialog(
-      title: Text("Your location"),
-      content: TextField(
+      title: const Text("Your location"),
+      content: const TextField(
         decoration: InputDecoration(
           hintText: " Search address...",
 
@@ -21,12 +20,12 @@ class Mylocation extends StatelessWidget {
         // cancel location
         MaterialButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("Cancel"),
+          child: const Text("Cancel"),
         ),
 
          MaterialButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("Save"),
+          child: const Text("Save"),
          ),
 
       ],
@@ -55,7 +54,7 @@ class Mylocation extends StatelessWidget {
                         color: Theme.of(context).colorScheme.inversePrimary , fontWeight: FontWeight.bold)),
                   
                 // drop down menu
-                Icon(Icons.keyboard_arrow_down_rounded),
+                const Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),
           ),

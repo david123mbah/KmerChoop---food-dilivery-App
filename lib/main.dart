@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/auth/login_or_Register.dart';
-import 'package:musicapp/pages/login_page.dart';
 import 'package:musicapp/themes/theme_provider.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';

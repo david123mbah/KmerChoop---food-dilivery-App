@@ -12,7 +12,7 @@ class MyDescription extends StatelessWidget {
       color: Theme.of(context).colorScheme.inversePrimary
      );
      var mySecondaryTextStyle = TextStyle(
-      color: Theme.of(context).colorScheme.primary
+      color: Theme.of(context).colorScheme.inversePrimary
      );
 
 

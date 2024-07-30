@@ -21,10 +21,10 @@ class Food {
 }
   // Food categories
   enum FoodCategories {
-    maindish,
+    dish,
     salads,
     sides,
-    desserts,
+    desert,
     drinks,
 
   }

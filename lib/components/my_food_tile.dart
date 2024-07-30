@@ -32,12 +32,12 @@ class FoodTile extends StatelessWidget {
                       TextStyle(color: Theme.of(context).colorScheme.primary),),
                       const SizedBox(height: 10,),
                       Text(food.description , style: 
-                      TextStyle(color: Theme.of(context).colorScheme.primary)),
+                      TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
                     ]
                   )
                 ),
 
-                SizedBox(width: 15,),
+                const SizedBox(width: 15,),
                 // food image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
