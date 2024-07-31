@@ -5,7 +5,7 @@ import 'package:musicapp/themes/light_mode.dart';
 
 
 class ThemeProvider with ChangeNotifier{
-   ThemeData _themeData = lightMode;
+   ThemeData _themeData = darktMode;
   ThemeData  get themeData => _themeData;
 
   bool get isDarkMode => _themeData == darktMode;

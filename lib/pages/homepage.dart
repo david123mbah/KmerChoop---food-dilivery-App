@@ -6,6 +6,7 @@ import 'package:musicapp/components/my_discription_box.dart';
 import 'package:musicapp/components/my_food_tile.dart';
 import 'package:musicapp/components/my_location.dart';
 import 'package:musicapp/models/food.dart';
+import 'package:musicapp/pages/food_page.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:musicapp/widgets/my_drawer.dart';
 import 'package:musicapp/widgets/my_tab_bar.dart';
@@ -57,7 +58,9 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
 
 
 
-        return FoodTile( food: food, onTap: () {},);
+        return FoodTile( food: food, onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Foodpage(food: food,)));
+        },);
     },
         
         );
