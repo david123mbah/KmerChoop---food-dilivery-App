@@ -17,6 +17,10 @@ class Foodpage extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(food.imagePath),
+
+
+          // Container 
+          
           // food name 
           Text(food.name),
       
