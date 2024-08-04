@@ -13,32 +13,52 @@ class Foodpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Image.asset(food.imagePath),
-
-
-          // Container 
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(food.imagePath),
+        
+        
+            // Container 
+            
+            // food name 
+            Text(
+              food.name,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+        
+        
+            // food description
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                food.description,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+        
+        
+            // addons
+            Material(
           
-          // food name 
-          Text(food.name),
-      
-      
-          // food description
-          Text(food.description),
-      
-      
-          // addons
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: food.availableAddons.length,
-            itemBuilder: ((context, index) {
-              return CheckboxListTile(value: false, onChanged: (value) {},);
-            }),
-          )
-        ],
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: food.availableAddons.length,
+                itemBuilder: ((context, index) {
+                  // get individual addon 
+                  Addon addon = food.availableAddons[index];
+                  return CheckboxListTile(
+                    title: Text(addon.name),
+                    value: false, 
+                    onChanged: (value) {},
+                    );
+                }),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
