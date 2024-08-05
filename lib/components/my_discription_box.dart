@@ -29,7 +29,7 @@ class MyDescription extends StatelessWidget {
           children: [
             Column(
               children: [
-                Text('\$0.99', style: myPrimaryTextStyle,),
+                Text('1000 XAF', style: myPrimaryTextStyle,),
                 Text("Delivery fee" , style: mySecondaryTextStyle,)
               ],
             ),

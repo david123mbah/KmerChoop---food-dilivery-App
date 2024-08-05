@@ -28,7 +28,7 @@ class FoodTile extends StatelessWidget {
             
                       // text food details
                       Text(food.name),
-                      Text( '\$${food.price}' , style: 
+                      Text( '${food.price}  XAF' , style: 
                       TextStyle(color: Theme.of(context).colorScheme.primary),),
                       const SizedBox(height: 10,),
                       Text(food.description , style: 
