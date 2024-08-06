@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/pages/cart_page.dart';
 
 
 class MyAppbar extends StatelessWidget {
@@ -19,6 +20,10 @@ class MyAppbar extends StatelessWidget {
         //card button 
         IconButton(
           onPressed: () {
+            // go to cart page
+            Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const CartPage())
+            );
           
           
           }, 

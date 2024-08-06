@@ -15,6 +15,7 @@ class FoodPage extends StatefulWidget {
 
 class _FoodPageState extends State<FoodPage> {
   late Map<Addon, bool> _selectedAddons;
+  bool _showSuccessMessage = false;
 
   @override
   void initState() {
@@ -28,6 +29,9 @@ class _FoodPageState extends State<FoodPage> {
         .map((entry) => entry.key)
         .toList();
     context.read<Restaurant>().addToCart(widget.food, selectedAddons);
+    setState(() {
+      _showSuccessMessage = true;
+    });
   }
 
   @override
@@ -122,6 +126,17 @@ class _FoodPageState extends State<FoodPage> {
                   text: "Add to cart",
                   onTap: _addToCart,
                 ),
+                if (_showSuccessMessage)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Text(
+                      "Added to cart successfully! Enjoy your meal.",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 const SizedBox(height: 25),
               ],
             ),
