@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:collection/equality.dart';
 import 'package:flutter/material.dart';
 import 'package:musicapp/models/cart.dart';
 import 'package:musicapp/models/food.dart';
@@ -344,31 +345,58 @@ O P E R A T I O N S
   // user cart
  final  List<CartItem> _cart = [];
 
-  // add to cart 
-  void addToCart(Food food, List<Addon> selectedAddons) {
-    // check whats already on the cart
-    CartItem? cartItem = _cart.firstWhereOrNull((item) => 
-    // check food item are the same and addon the same
-    
+ 
+ void addToCart(Food food, List<Addon> selectedAddons) {
+  // Check if the same food item with the same addons already exists in the cart
+  CartItem? cartItem = _cart.firstWhereOrNull((item) {
+    return item.food == food && const ListEquality().equals(item.selectedAddons, selectedAddons);
+  });
 
-    );
+  if (cartItem != null) {
+    // Increment the quantity of the existing cart item
+    cartItem.quantity++;
+  } else {
+    // Create a new cart item and add it to the cart
+    CartItem newCartItem = CartItem(food: food, selectedAddons: selectedAddons, quantity: 1);
+    _cart.add(newCartItem);
   }
+}
 
 
 
 
-
-
-
-  // remove from cart 
-
-
+// remove from cart
+void removeFromCart(CartItem cartItem) {
+  int cartIndex = _cart.indexOf(cartItem);
+  if (cartIndex != -1) {
+    if (cartItem.quantity > 1) {
+      // Decrement the quantity of the existing cart item
+      cartItem.quantity--;
+    } else {
+      // Remove the cart item from the list
+      _cart.removeAt(cartIndex);
+    }
+  }
+}
 
 
 
 
 
 // get total price  to cart
+ double getTotalPrice() {
+  double total = 0.0;
+
+  for (CartItem cartItem  in _cart) {
+    double itemTotal = cartItem.food.price;
+
+    for (Addon addon in cartItem.selectedAddons) {
+      itemTotal += addon.price;
+    }
+    total += itemTotal + cartItem.quantity;
+  }
+  return total;
+ }
 
 
 
