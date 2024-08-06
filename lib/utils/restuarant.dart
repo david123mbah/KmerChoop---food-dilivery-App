@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:musicapp/models/cart.dart';
 import 'package:musicapp/models/food.dart';
 
 
@@ -338,7 +340,20 @@ O P E R A T I O N S
 
 */
 
+
+  // user cart
+ final  List<CartItem> _cart = [];
+
   // add to cart 
+  void addToCart(Food food, List<Addon> selectedAddons) {
+    // check whats already on the cart
+    CartItem? cartItem = _cart.firstWhereOrNull((item) => 
+    // check food item are the same and addon the same
+    
+
+    );
+  }
+
 
 
 
