@@ -58,7 +58,7 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
 
 
         return FoodTile( food: food, onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Foodpage(food: food,)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => FoodPage(food: food,)));
         },);
     },
         
