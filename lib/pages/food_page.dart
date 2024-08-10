@@ -10,6 +10,7 @@ class FoodPage extends StatefulWidget {
   const FoodPage({super.key, required this.food});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FoodPageState createState() => _FoodPageState();
 }
 

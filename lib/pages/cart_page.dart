@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_cardtile.dart';
-import 'package:musicapp/models/cart.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +12,7 @@ class CartPage extends StatelessWidget {
       builder: (context, restaurant, child) {
         // cart
         final userCart = restaurant.cart;
-
+ 
         return Scaffold(
           appBar: AppBar(
             title: Center(
@@ -32,11 +31,18 @@ class CartPage extends StatelessWidget {
                 itemBuilder: (context, index) {
 
                 // get Individual cart item
+                
+
+
+
+
                 // ignore: non_constant_identifier_names
                 final CartItem = userCart[index];
                 
                 // return cart tile UI
-                 return MyCartTile(cartItem: CartItem);
+                 return MyCartTile(
+                  cartItem: CartItem
+                 );
                 },
               ),
               )
