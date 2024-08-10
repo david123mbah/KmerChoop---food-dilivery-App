@@ -23,6 +23,35 @@ class CartPage extends StatelessWidget {
                   fontSize: 17,
                   fontWeight: FontWeight.bold),
             )),
+            actions: [
+              // clear the cart
+              IconButton(onPressed: () {
+               showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text("Are you sure you want to clear the cart?"),
+                  actions: [
+                    // cancel delte
+                    TextButton(
+                      onPressed: () => Navigator.pop(context), 
+                    child: const Text("Cancel"),
+                    ),
+
+                    // yes
+                    TextButton(
+                      onPressed: () {
+                       Navigator.pop(context);
+                      restaurant.clearCart();
+                      }, 
+                    child: const Text("Yes"),
+                    ),
+                  ],
+                ),
+               );
+              }, 
+              icon: const Icon(Icons.delete)
+              )
+            ],
           ),
           body: Column(
             children: [
