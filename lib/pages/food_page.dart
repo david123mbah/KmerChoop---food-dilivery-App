@@ -65,7 +65,7 @@ class _FoodPageState extends State<FoodPage> {
                       ),
                       // Food Price
                       Text(
-                        '\$${widget.food.price.toString()}',
+                        '${widget.food.price.toString()} XAF',
                         style: TextStyle(
                           fontSize: 22,
                           color: Theme.of(context).colorScheme.primary,
