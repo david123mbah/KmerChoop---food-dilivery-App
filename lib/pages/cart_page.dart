@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_cardtile.dart';
 import 'package:musicapp/utils/restuarant.dart';
+import 'package:musicapp/widgets/my_button.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -74,10 +75,14 @@ class CartPage extends StatelessWidget {
                  );
                 },
               ),
-              )
+              ),
+              MyButton(text: "Go to Checkout", onTap: () {}),
+              const SizedBox(height: 25,)
               
             ],
           ),
+
+          
         );
       },
     );
