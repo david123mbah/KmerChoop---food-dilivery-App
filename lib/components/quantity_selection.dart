@@ -15,7 +15,7 @@ class QuantitySelector extends StatelessWidget {
       required this.quantity,
       // ignore: non_constant_identifier_names
       required this.OnDecrement,
-      // ignore: non_constant_identifier_names
+    
       required this.OnIncrement});
 
   @override

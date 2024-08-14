@@ -44,24 +44,24 @@ void login() {
               height: 25,
             ),
             Text(
-              " Food Delivery App",
+              "Kmer Chop",
               style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.inversePrimary),
             ),
-            const SizedBox(height: 25,),
+            const SizedBox(height: 45,),
             MyTextfield(
               controller: emailController,
               hintText: "Email",
               obscureText: false,
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(height: 15,),
              MyTextfield(
               controller: passwordController,
               hintText: "Password",
               obscureText: true,
             ),
-            const SizedBox(height: 25,),
+            const SizedBox(height: 45,),
 
           MyButton(
             text: "Sign In", 
@@ -70,7 +70,7 @@ void login() {
             }
           ),
 
-          const SizedBox(height: 25,),
+          const SizedBox(height: 45,),
           // not registered yet 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
