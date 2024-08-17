@@ -12,17 +12,30 @@ class Restaurant  extends ChangeNotifier{
 
   // list of maindishs
   Food(
-    name: "Classic Chesseburger",
-    description: " Ajuicy patty with melted chadder , lettuce souce and a hint of onion and packle", 
-    imagePath: "lib/assets/images/pexels-aimbere-elorza-1176843138-27220878.jpg", 
-    price: 1000.25,
+    name: "Fufu and Eru",
+    description: " A taste of heaven  ,from the northwest region traditional meal", 
+    imagePath: "lib/assets/images/imagesdart.jpeg", 
+    price: 5000.25,
      category: FoodCategories.dish, 
     availableAddons: [
-      Addon(name: "Extra large", price: 500.50),
-      Addon(name: "Extra meat", price: 700.80),
-      Addon(name: "With Avocado", price: 800.10),
+      Addon(name: "Extra Fufu", price: 500.50),
+      Addon(name: "Extra meat and soup", price: 700.80),
+      Addon(name: "With Garri", price: 800.10),
     ]
   ),
+   Food(
+    name: "Fufu corn and Ndangma Ndagma",
+    description: " A taste of southwest comeroon , made to satisfy ", 
+    imagePath: "lib/assets/images/dhdh.jpeg", 
+    price: 5000.25,
+     category: FoodCategories.dish, 
+    availableAddons: [
+      Addon(name: "Extra Fufu", price: 500.50),
+      Addon(name: "Extra meat and soup", price: 700.80),
+      Addon(name: "With Garri", price: 800.10),
+    ]
+  ),
+
   Food(
     name: "PanCake",
     description: " A juicy patty with Honey ,  souce and a hint of  and packle", 

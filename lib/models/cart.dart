@@ -12,7 +12,7 @@ class CartItem {
   CartItem({
     required this.food,
     required this.quantity,
-    required this.selectedAddons
+    required this.selectedAddons, 
   });
 
   double get totalPrice {

@@ -4,6 +4,10 @@ import 'package:musicapp/themes/theme_provider.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';
 
+
+
+
+
 void main() {
   runApp( 
     MultiProvider(

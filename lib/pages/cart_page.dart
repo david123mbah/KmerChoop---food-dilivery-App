@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/my_cardtile.dart';
+import 'package:musicapp/pages/payment_page.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:musicapp/widgets/my_button.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ class CartPage extends StatelessWidget {
       builder: (context, restaurant, child) {
         // cart
         final userCart = restaurant.cart;
- 
+
         return Scaffold(
           appBar: AppBar(
             title: Center(
@@ -26,63 +27,62 @@ class CartPage extends StatelessWidget {
             )),
             actions: [
               // clear the cart
-              IconButton(onPressed: () {
-               showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text("Are you sure you want to clear the cart?"),
-                  actions: [
-                    // cancel delte
-                    TextButton(
-                      onPressed: () => Navigator.pop(context), 
-                    child: const Text("Cancel"),
-                    ),
+              IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text(
+                            "Are you sure you want to clear the cart?"),
+                        actions: [
+                          // cancel delte
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text("Cancel"),
+                          ),
 
-                    // yes
-                    TextButton(
-                      onPressed: () {
-                       Navigator.pop(context);
-                      restaurant.clearCart();
-                      }, 
-                    child: const Text("Yes"),
-                    ),
-                  ],
-                ),
-               );
-              }, 
-              icon: const Icon(Icons.delete)
-              )
+                          // yes
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              restaurant.clearCart();
+                            },
+                            child: const Text("Yes"),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.delete))
             ],
           ),
           body: Column(
             children: [
-              Expanded(child: ListView.builder(
-                itemCount: userCart.length,
-                itemBuilder: (context, index) {
+              Expanded(
+                child: ListView.builder(
+                  itemCount: userCart.length,
+                  itemBuilder: (context, index) {
+                    // get Individual cart item
 
-                // get Individual cart item
-                
+                    // ignore: non_constant_identifier_names
+                    final CartItem = userCart[index];
 
-
-
-
-                // ignore: non_constant_identifier_names
-                final CartItem = userCart[index];
-                
-                // return cart tile UI
-                 return MyCartTile(
-                  cartItem: CartItem
-                 );
-                },
+                    // return cart tile UI
+                    return MyCartTile(cartItem: CartItem);
+                  },
+                ),
               ),
-              ),
-              MyButton(text: "Go to Checkout", onTap: () {}),
-              const SizedBox(height: 25,)
-              
+              MyButton(
+                  text: "Go to Checkout",
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PaymentPage()))),
+              const SizedBox(
+                height: 25,
+              )
             ],
           ),
-
-          
         );
       },
     );
