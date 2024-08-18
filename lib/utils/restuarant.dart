@@ -459,6 +459,10 @@ HELPERS
 
 // generate receipt 
 
+String _FormatPrice(double price) {
+   return "${price.toStringAsFixed(2)} XAF";
+}
+
 
 
 
@@ -468,12 +472,15 @@ HELPERS
 
 
 // format list of addons into a string summary
-
-
-
-
-
-
-
-
+ // String  _formaAddons(List<Addon> addons)  {  
+   //return addons 
+     // .map((addon) =>  "${addon.price} (${_formatPrice(addon.price)}) XAF");
 }
+
+
+
+
+
+
+
+
