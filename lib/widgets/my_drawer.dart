@@ -39,6 +39,15 @@ class MyDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Settingpage()));
             },
           ),
+           MydrawerTitle(
+            text: "T R A C K",
+            icon: Icons.map_outlined,
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Settingpage()));
+            },
+          ),
           const Spacer(),
           MydrawerTitle(
             text: "L O G O U T",

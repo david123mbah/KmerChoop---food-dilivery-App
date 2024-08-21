@@ -32,7 +32,7 @@ class MyAppbar extends StatelessWidget {
       ],
       backgroundColor: Theme.of(context).colorScheme.background,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Center(child: Text( "ENJOY YOUR MEAL 😋")) ,
+      title: const Center(child: Text( " ORDER NOW 😋")) ,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: const EdgeInsets.only(bottom: 50 ),
