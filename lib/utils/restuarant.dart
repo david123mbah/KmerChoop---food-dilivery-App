@@ -339,6 +339,17 @@ Addon(name: "Extra Fruit", price: 1000.00)
  ];
     
 
+
+    
+
+// Dilivery Address 
+ String _diliveryAddress = "Messasi";
+  // update diliveryAdsress
+  void updateDeliveryAddress( String newAddress) {
+  _diliveryAddress = newAddress;
+  notifyListeners();
+  }
+
 /*
 GETTERS 
 
@@ -346,6 +357,7 @@ GETTERS
 
 List<Food> get menu => _menu;
 List<CartItem> get cart => _cart;
+String get diliveryAddress => _diliveryAddress;
 
 
 /*
@@ -436,7 +448,6 @@ void clearCart() {
   _cart.clear();
   notifyListeners();
 }
-
 
 
 

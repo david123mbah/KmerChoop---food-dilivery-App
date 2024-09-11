@@ -11,7 +11,8 @@ class Loginpage extends StatefulWidget {
   State<Loginpage> createState() => _LoginpageState();
 }
 
-class _LoginpageState extends State<Loginpage> with SingleTickerProviderStateMixin {
+class _LoginpageState extends State<Loginpage>
+    with SingleTickerProviderStateMixin {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -23,8 +24,8 @@ class _LoginpageState extends State<Loginpage> with SingleTickerProviderStateMix
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
-    )..repeat();
+      duration: const Duration(seconds: 2),
+    )..repeat(); // Continuously repeat the animation
   }
 
   @override
@@ -37,7 +38,8 @@ class _LoginpageState extends State<Loginpage> with SingleTickerProviderStateMix
 
   void login() {
     // Navigate to the homepage
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Homepage()));
   }
 
   @override
@@ -48,11 +50,13 @@ class _LoginpageState extends State<Loginpage> with SingleTickerProviderStateMix
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Lorry Icon with Shake Effect, placed directly on the road
             AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(0, -2 + 4 * (_controller.value - 1.1).abs()), // Shake effect
+                  offset: Offset(0,
+                      -2 + 4 * (_controller.value - 1.1).abs()), // Shake effect
                   child: Icon(
                     Icons.local_shipping_rounded, // Lorry icon
                     size: 80,
@@ -61,26 +65,46 @@ class _LoginpageState extends State<Loginpage> with SingleTickerProviderStateMix
                 );
               },
             ),
+            // Road Animation (Continuous Moving Effect)
             SizedBox(
-              width: 150, // Width of the road
-              height: 3,  // Height of the road
+              width: 100, // Width of the road
+              height: 3, // Height of the road
               child: AnimatedBuilder(
                 animation: _controller,
                 builder: (context, child) {
-                  return Transform.translate(
-                    offset: Offset(-_controller.value * 40, -10), // Moves the road
-                    child: Row(
-                      children: List.generate(3, (index) => 
-                        Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 3),
-                            color: Theme.of(context).colorScheme.primary,
-                            height: 5,
-                            
+                  return Stack(
+                    children: [
+                      Positioned(
+                        left: _controller.value * 150 -
+                            150, // Moves the road from right to left
+                        child: Row(
+                          children: List.generate(
+                            3,
+                            (index) => Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 3),
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 50, // Width of each road segment
+                              height: 3,
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                      Positioned(
+                        left: _controller.value *
+                            150, // Moves the road from right to left (second set)
+                        child: Row(
+                          children: List.generate(
+                            3,
+                            (index) => Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 3),
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 50, // Width of each road segment
+                              height: 3,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),

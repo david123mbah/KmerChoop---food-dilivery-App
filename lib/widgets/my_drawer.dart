@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/mydrawer_title.dart';
+import 'package:musicapp/pages/diveryMap_page.dart';
 import 'package:musicapp/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -45,7 +46,7 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Settingpage()));
+                  MaterialPageRoute(builder: (context) => const DiiveyMap ()));
             },
           ),
           const Spacer(),

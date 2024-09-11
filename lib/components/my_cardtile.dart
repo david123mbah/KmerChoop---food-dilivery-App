@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/quantity_selection.dart';
 import 'package:musicapp/models/cart.dart';
-import 'package:musicapp/models/food.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';
 
