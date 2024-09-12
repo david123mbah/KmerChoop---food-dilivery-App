@@ -41,7 +41,24 @@ dependencies:
   google_maps_flutter: ^2.9.0
   dio: ^5.6.0
   flutter_polyline_points: ^2.1.0
- 
+  geocoding: ^2.0.0
+  http: ^1.2.2
+  intl: ^0.19.0
+  flutter_animate: ^4.5.0
+  url_launcher: ^6.3.0
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+
+  android: true
+  image_path: "lib/assets/images/me.png"
+  min_sdk_android: 21
+  ios: true
+  name: "QuickBite"
+  
 
 dev_dependencies:
   flutter_test:

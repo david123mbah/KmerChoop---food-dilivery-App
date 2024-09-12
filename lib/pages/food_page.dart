@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:musicapp/models/food.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:musicapp/widgets/my_button.dart';
@@ -29,7 +30,7 @@ class _FoodPageState extends State<FoodPage> {
         .where((entry) => entry.value)
         .map((entry) => entry.key)
         .toList();
-    context.read<Restaurant>().addToCart(widget.food, selectedAddons);
+    context.read<Restaurant>().addToCart(widget.food, selectedAddons, selectedAddons.length );
     setState(() {
       _showSuccessMessage = true;
     });
@@ -43,36 +44,43 @@ class _FoodPageState extends State<FoodPage> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                // Food Image
+                // Animated Food Image
                 Image.asset(
                   widget.food.imagePath,
                   width: 500,
                   height: 400,
                   fit: BoxFit.cover,
-                ),
+                )
+                .animate()
+                .fadeIn(duration: 500.ms)
+                .scale(begin: const Offset(0.8, 1.0)),
+                
                 Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Food Name
+                      // Animated Food Name
                       Text(
                         widget.food.name,
                         style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      // Food Price
+                      ).animate().slideX(duration: 500.ms),
+
+                      // Animated Food Price
                       Text(
                         '${widget.food.price.toString()} XAF',
                         style: TextStyle(
                           fontSize: 22,
                           color: Theme.of(context).colorScheme.primary,
                         ),
-                      ),
+                      ).animate().fadeIn(duration: 500.ms),
+
                       const Divider(),
                       const SizedBox(height: 10),
+
                       // Add-Ons Title
                       Text(
                         "Add-Ons",
@@ -80,8 +88,9 @@ class _FoodPageState extends State<FoodPage> {
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.inversePrimary,
                         ),
-                      ),
-                      // Food Description
+                      ).animate().slideX(duration: 500.ms),
+
+                      // Animated Food Description
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
@@ -91,7 +100,8 @@ class _FoodPageState extends State<FoodPage> {
                             color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
-                      ),
+                      ).animate().fadeIn(duration: 500.ms),
+
                       // Add-Ons List
                       Container(
                         decoration: BoxDecoration(
@@ -115,18 +125,22 @@ class _FoodPageState extends State<FoodPage> {
                                   _selectedAddons[addon] = value!;
                                 });
                               },
-                            );
+                            ).animate().fadeIn(duration: 500.ms);
                           },
                         ),
                       ),
                     ],
                   ),
                 ),
-                // Add to Cart Button
+                
+                // Animated Add to Cart Button
                 MyButton(
                   text: "Add to cart",
                   onTap: _addToCart,
-                ),
+                )
+                .animate()
+                .scale(begin: const Offset(0.8, 1.0), duration: 300.ms),
+
                 if (_showSuccessMessage)
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -136,14 +150,15 @@ class _FoodPageState extends State<FoodPage> {
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ).animate().fadeIn(duration: 500.ms),
                   ),
                 const SizedBox(height: 25),
               ],
             ),
           ),
         ),
-        // Back arrow
+        
+        // Back Arrow
         SafeArea(
           child: Opacity(
             opacity: 0.5,
@@ -158,7 +173,7 @@ class _FoodPageState extends State<FoodPage> {
                 icon: const Icon(Icons.arrow_back_ios_rounded),
               ),
             ),
-          ),
+          ).animate().scale(duration: 300.ms),
         ),
       ],
     );

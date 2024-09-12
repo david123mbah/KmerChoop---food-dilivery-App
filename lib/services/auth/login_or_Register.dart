@@ -25,7 +25,7 @@ bool showLoginPage = true;
   @override
   Widget build(BuildContext context) {
     if (showLoginPage) {
-      return Loginpage(onTap: togglePages);
+      return LoginPage(onTap: togglePages);
     } else {
       return Registerpage(onTap: togglePages);
     }

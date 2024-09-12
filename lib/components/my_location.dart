@@ -1,17 +1,20 @@
-import 'package:flutter/material.dart';  // Fixed the spelling here
+import 'package:flutter/material.dart';
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';
 
 class Mylocation extends StatelessWidget {
-  const Mylocation({super.key});
+  Mylocation({super.key});
+
+  final TextEditingController textController = TextEditingController();
 
   void _openLocationSearchBox(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Your location"),
-        content: const TextField(
-          decoration: InputDecoration(
+        content: TextField(
+          controller: textController,
+          decoration: const InputDecoration(
             hintText: "Search address...",
           ),
         ),
@@ -23,7 +26,12 @@ class Mylocation extends StatelessWidget {
           ),
           // Save location
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              final newAddress = textController.text;
+              context.read<Restaurant>().updateDeliveryAddress(newAddress);
+              Navigator.pop(context);
+              textController.clear();
+            },
             child: const Text("Save"),
           ),
         ],
@@ -36,10 +44,10 @@ class Mylocation extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Aligned text to start
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Deliver now",
+            "Delivery Address !",
             style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -48,17 +56,15 @@ class Mylocation extends StatelessWidget {
             onTap: () => _openLocationSearchBox(context),
             child: Row(
               children: [
-                // Location
                 Consumer<Restaurant>(
                   builder: (context, restaurant, child) => Text(
-                    restaurant.diliveryAddress, // Assuming `location` is the correct field
+                    restaurant.diliveryAddress, // Assuming `deliveryAddress` is the correct field
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                // Drop down menu icon
                 const Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),
@@ -68,3 +74,4 @@ class Mylocation extends StatelessWidget {
     );
   }
 }
+

@@ -14,9 +14,9 @@ class Settingpage extends StatelessWidget {
           padding: EdgeInsets.only(left: 75),
           child: Text("Settings"),
         ),
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         children: [
           // dark mode

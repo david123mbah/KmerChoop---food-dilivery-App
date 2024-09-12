@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:musicapp/components/mydrawer_title.dart';
+import 'package:musicapp/pages/Contact.dart';
 import 'package:musicapp/pages/diveryMap_page.dart';
 import 'package:musicapp/pages/setting_page.dart';
 
@@ -9,14 +11,13 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 100.0),
-            child: Icon(
-              Icons.lock_open_rounded,
-              size: 80,
+            child: Image.asset(
+              "lib/assets/images/me.png",
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
           ),
@@ -46,9 +47,19 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const DiiveyMap ()));
+                  MaterialPageRoute(builder: (context) => const DeliveryMap()));
             },
           ),
+           MydrawerTitle(
+            text: "C O N T A C T U S",
+            icon: Icons.map_outlined,
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ContactUsPage ()));
+            },
+          ),
+                  
           const Spacer(),
           MydrawerTitle(
             text: "L O G O U T",

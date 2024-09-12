@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1064134827483",
+    "project_id": "innopulse-b63ea",
+    "storage_bucket": "innopulse-b63ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064134827483:android:ea44869e93e7af98489bfe",
+        "android_client_info": {
+          "package_name": "com.example.musicapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNhTspiNe3_CeYOSF3xORwR0yKXc3shq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

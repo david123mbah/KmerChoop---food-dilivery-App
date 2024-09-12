@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:musicapp/components/my_appbar.dart';
 import 'package:musicapp/components/my_discription_box.dart';
 import 'package:musicapp/components/my_food_tile.dart';
@@ -88,10 +89,10 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
                 ),
 
                 // my location
-                const Mylocation(),
+                 Mylocation(),
 
                 //  my discribtion
-                const MyDescription()
+                const MyDescription().animate().fadeIn(duration: 1000.ms)
               ],
             ),
           ),
@@ -100,7 +101,7 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
           builder: (context, restaurant , child ) =>
           TabBarView(
             controller: _tabController,
-            children:  getFoodInThisCategory(restaurant.menu),
+            children:  getFoodInThisCategory(restaurant.menu).animate().fadeIn(duration: 1000.ms)
           ),
         )
       ),

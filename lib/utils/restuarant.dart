@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:collection/equality.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:musicapp/models/cart.dart';
 import 'package:musicapp/models/food.dart';
 
@@ -343,7 +344,10 @@ Addon(name: "Extra Fruit", price: 1000.00)
     
 
 // Dilivery Address 
- String _diliveryAddress = "Messasi";
+ String _diliveryAddress = "Enter a location for delivery of your food";
+
+
+ 
   // update diliveryAdsress
   void updateDeliveryAddress( String newAddress) {
   _diliveryAddress = newAddress;
@@ -372,7 +376,7 @@ O P E R A T I O N S
  final  List<CartItem> _cart = [];
 
  
- void addToCart(Food food, List<Addon> selectedAddons) {
+ void addToCart(Food food, List<Addon> selectedAddons, int quantity) {
   // Check if the same food item with the same addons already exists in the cart
   CartItem? cartItem = _cart.firstWhereOrNull((item) {
     return item.food == food && const ListEquality().equals(item.selectedAddons, selectedAddons);
@@ -470,8 +474,37 @@ HELPERS
 
 // generate receipt 
 
-String _FormatPrice(double price) {
-   return "${price.toStringAsFixed(2)} XAF";
+
+String displayCartReceipt() {
+  final receipt = StringBuffer();
+  receipt.writeln("Here is your Receipt,");
+  receipt.writeln();
+
+
+  // format receipt date 
+  String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+
+  receipt.writeln(formattedDate);
+  receipt.writeln();
+  receipt.writeln("--------");
+
+  for (final cartItem in _cart)  {
+    receipt.writeln("${cartItem.quantity}  * ${cartItem.food.name}  - ${_FormatPrice(cartItem.food.price)} XAF");
+    if (cartItem.selectedAddons.isNotEmpty) {
+      receipt.writeln(" Add-ons: ${_formaAddons(cartItem.selectedAddons)}");
+    }
+     receipt.writeln();
+  
+  }
+  receipt.writeln("------------");
+    receipt.writeln();
+    receipt.writeln("Totals Items: ${getTotalItemCount()} ");
+    receipt.writeln("Totals Price: ${(_FormatPrice(getTotalPrice()))} XAF");
+    receipt.writeln();
+    receipt.writeln("Delivery to: $diliveryAddress");
+
+
+    return receipt.toString();
 }
 
 
@@ -480,14 +513,19 @@ String _FormatPrice(double price) {
 
 // format double Value into Money 
 
+String _FormatPrice(double price) {
+   return "${price.toStringAsFixed(2)} XAF";
+}
+
 
 
 // format list of addons into a string summary
- // String  _formaAddons(List<Addon> addons)  {  
-   //return addons 
-     // .map((addon) =>  "${addon.price} (${_formatPrice(addon.price)}) XAF");
+ String  _formaAddons(List<Addon> addons)  {  
+   return addons 
+     .map((addon) =>  "${addon.price} (${_FormatPrice(addon.price)}) XAF")
+     .join(", ");
 }
-
+}
 
 
 
