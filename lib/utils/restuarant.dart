@@ -494,6 +494,9 @@ String displayCartReceipt() {
   receipt.writeln();
 
 
+  
+
+
   // format receipt date 
   String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 

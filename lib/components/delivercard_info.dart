@@ -27,7 +27,7 @@ class DeliveryInfoCard extends StatelessWidget {
             onTap: () {
               // Handle order details action
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const DeliveryPage()));
+                  MaterialPageRoute(builder: (context) =>  DeliveryPage()));
             },
           ),
         ],

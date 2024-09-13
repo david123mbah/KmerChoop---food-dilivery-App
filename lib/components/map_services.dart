@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:http/http.dart' as http;
@@ -30,7 +31,7 @@ class MapService {
   }
 
   Future<void> _getRoute(LatLng start, LatLng end) async {
-    const apiKey = 'AIzaSyDS2FebHg8r3ewfdq8U5_REb0h22lFaLiE'; // Replace with your API key
+    final apiKey = dotenv.env['GOOGLE_MAPS_API_KEY']; // Replace with your API key
     final url = 'https://maps.googleapis.com/maps/api/directions/json'
         '?origin=${start.latitude},${start.longitude}'
         '&destination=${end.latitude},${end.longitude}'

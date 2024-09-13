@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:musicapp/utils/restuarant.dart';
 
 class DeliveryMap extends StatefulWidget {
-  const DeliveryMap({Key? key}) : super(key: key);
+  
+  const DeliveryMap({super.key});
 
   @override
   State<DeliveryMap> createState() => _DeliveryMapState();

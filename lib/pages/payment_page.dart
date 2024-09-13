@@ -104,7 +104,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 .scale(begin: const Offset(0.8, 1.0))
                 .then()
                 .shimmer(duration: 1800.ms),
-            const SizedBox(height: 30),
+            const SizedBox(height: 0),
             Column(
               children: [
                 Image.asset(

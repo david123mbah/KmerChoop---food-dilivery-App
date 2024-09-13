@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:musicapp/firebase_options.dart';
 import 'package:musicapp/services/auth/login_or_Register.dart';
 import 'package:musicapp/themes/theme_provider.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(); // Load environment variables
 
   // Initialize Firebase
   try {
