@@ -10,37 +10,50 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.onTap});
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Initialize controllers for text fields
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  // Instance of AuthServices for handling authentication
   final AuthServices _authServices = AuthServices();
+  
+  // New variable to track loading state
+  bool _isLoading = false;
 
   // Method to handle login
   void _login() async {
+    setState(() {
+      _isLoading = true; // Start loading
+    });
+
     try {
       await _authServices.signIn(_emailController.text, _passwordController.text);
-      // ignore: use_build_context_synchronously
+
+      // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Login successful!" , style: TextStyle(color: Colors.blue),)),
+        const SnackBar(
+          content: Text("Login successful!", style: TextStyle(color: Colors.blue)),
+        ),
       );
       Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const Homepage()),
       );
     } catch (e) {
-      // Show an error message if login fails
-      // ignore: use_build_context_synchronously
+      // Show error message
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login failed: $e" , style: TextStyle(color: Colors.red.withOpacity(0.8)),)),
+        SnackBar(
+          content: Text(
+            "Login failed: $e",
+            style: TextStyle(color: Colors.red.withOpacity(0.8)),
+          ),
+        ),
       );
+    } finally {
+      setState(() {
+        _isLoading = false; // Stop loading
+      });
     }
   }
 
@@ -96,14 +109,16 @@ class _LoginPageState extends State<LoginPage> {
                   .slideX(begin: 0.2, end: 0),
               const SizedBox(height: 45),
 
-              MyButton(
-                text: "Sign In",
-                onTap: _login,
-                
-              )
-                  .animate()
-                  .fadeIn(delay: 2100.ms, duration: 800.ms)
-                  .scale(begin: const Offset(0.8, 0.2)),
+              // Show a CircularProgressIndicator if _isLoading is true
+              _isLoading
+                  ? const CircularProgressIndicator() // Loading spinner
+                  : MyButton(
+                      text: "Sign In",
+                      onTap: _login,
+                    )
+                      .animate()
+                      .fadeIn(delay: 2100.ms, duration: 800.ms)
+                      .scale(begin: const Offset(0.8, 0.2)),
               const SizedBox(height: 45),
 
               Row(

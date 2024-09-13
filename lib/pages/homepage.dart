@@ -12,8 +12,6 @@ import 'package:musicapp/widgets/my_drawer.dart';
 import 'package:musicapp/widgets/my_tab_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/button_navigator bar.dart';
-
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -84,11 +82,7 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Divider(
-                  indent: 25,
-                  endIndent: 25,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                
 
                 // my location
                  Mylocation(),
@@ -107,7 +101,7 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
           ),
         )
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0, onItemSelected: (int ) {  },),
+    
     );
   }
 }

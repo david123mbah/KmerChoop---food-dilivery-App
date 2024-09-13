@@ -344,7 +344,7 @@ Addon(name: "Extra Fruit", price: 1000.00)
     
 
 // Dilivery Address 
- String _diliveryAddress = "Enter a location for delivery of your food";
+ String _diliveryAddress = "Enter a location ";
 
 
  
