@@ -33,7 +33,12 @@ class _DeliveryPageState extends State<DeliveryPage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: const SingleChildScrollView(
         child: Column(
+          
           children: [
+            Padding(
+              padding: EdgeInsets.all(26.0),
+              child: Center(child: Text("Receipt ")),
+            ),
             MyReceipt(),
           ],
         ),
