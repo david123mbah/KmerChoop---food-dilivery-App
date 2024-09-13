@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicapp/pages/homepage.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -10,11 +11,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
-    SearchPage(),
-    OrdersPage(),
-    NotificationsPage(),
-    ProfilePage(),
+    Homepage(),
+    
   ];
 
   @override
@@ -46,13 +44,13 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, -3),
+            offset: const Offset(0, -3),
           ),
         ],
       ),
@@ -65,8 +63,8 @@ class CustomBottomNavBar extends StatelessWidget {
               _buildNavItem(Icons.home, 'Home', 0),
               _buildNavItem(Icons.search, 'Search', 1),
               _buildNavItem(Icons.receipt, 'Orders', 2),
-              _buildNavItem(Icons.notifications, 'Notifications', 3),
-              _buildNavItem(Icons.person, 'Profile', 4),
+              _buildNavItem(Icons.contact_page_rounded, 'Contact', 3),
+              _buildNavItem(Icons.person, 'Settings', 4),
             ],
           ),
         ),
@@ -101,47 +99,3 @@ class CustomBottomNavBar extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Page'),
-    );
-  }
-}
-
-class SearchPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Search Page'),
-    );
-  }
-}
-
-class OrdersPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Orders Page'),
-    );
-  }
-}
-
-class NotificationsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Notifications Page'),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Profile Page'),
-    );
-  }
-}

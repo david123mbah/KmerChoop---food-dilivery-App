@@ -2,12 +2,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:musicapp/utils/restuarant.dart';
-import 'dart:async';
-import 'package:provider/provider.dart';
 import 'package:geocoding/geocoding.dart';
+import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:musicapp/utils/restuarant.dart';
 import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:musicapp/widgets/my_button.dart'; // Import the MyButton widget
 
 class DeliveryMap extends StatefulWidget {
   const DeliveryMap({super.key});
@@ -39,7 +40,6 @@ class _DeliveryMapState extends State<DeliveryMap> {
 
   Future<void> _setMapStyle(GoogleMapController controller) async {
     if (_mapStyleString.isNotEmpty) {
-      // ignore: deprecated_member_use
       await controller.setMapStyle(_mapStyleString);
     }
   }
@@ -62,21 +62,13 @@ class _DeliveryMapState extends State<DeliveryMap> {
             polylineId: const PolylineId('route-red'),
             color: Colors.red,
             width: 5,
-            points: polylinePoints.sublist(0, (polylinePoints.length / 2).floor()), // First half in red
-          );
-          _polylines[const PolylineId('route-green')] = Polyline(
-            polylineId: const PolylineId('route-green'),
-            color: Colors.green,
-            width: 5,
-            points: polylinePoints.sublist((polylinePoints.length / 2).ceil()), // Second half in green
+            points: polylinePoints,  // Full route in red
           );
         });
       } else {
-        // ignore: avoid_print
         print('Failed to load route');
       }
     } catch (e) {
-      // ignore: avoid_print
       print('Error fetching route: $e');
     }
   }
@@ -151,32 +143,136 @@ class _DeliveryMapState extends State<DeliveryMap> {
         ));
 
       } catch (e) {
-        // ignore: avoid_print
         print("Error finding location: $e");
       }
     }
   }
 
+  Future<String> _getAddressFromCoordinates(LatLng coordinates) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(coordinates.latitude, coordinates.longitude);
+      if (placemarks.isNotEmpty) {
+        Placemark place = placemarks[0];
+        return "${place.street}, ${place.locality}, ${place.administrativeArea} ${place.postalCode}";
+      }
+    } catch (e) {
+      print('Error fetching address: $e');
+    }
+    return "Unknown Address";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Tracking .......")),
+      body: Stack(
+        children: [
+          GoogleMap(
+            myLocationButtonEnabled: false,
+            zoomControlsEnabled: false,
+            initialCameraPosition: CameraPosition(
+              target: _currentLocation,
+              zoom: 13,
+            ),
+            onMapCreated: (controller) {
+              _controller.complete(controller);
+              _setMapStyle(controller);
+            },
+            polylines: Set<Polyline>.of(_polylines.values),
+            markers: _markers,
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Colors.black),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                      const Text(
+                        "Track Order",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  _buildDeliveryInfo(),
+                  const SizedBox(height: 16),
+                  MyButton(
+                    text: "Order Details",
+                    onTap: () {
+                      // Implement order details action
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-      body: GoogleMap(
-        myLocationButtonEnabled: false,
-        zoomControlsEnabled: false,
-        initialCameraPosition: CameraPosition(
-          target: _currentLocation,
-          zoom: 13,
+    );
+  }
+
+  Widget _buildDeliveryInfo() {
+    return FutureBuilder<String>(
+      future: _getAddressFromCoordinates(_currentLocation),  // Replace with your saved current location
+      builder: (context, snapshot) {
+        final address = snapshot.data ?? "Fetching address...";
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color(0xFF0D2535),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.person, color: Colors.white),
+                  ),
+                  SizedBox(width: 12),
+                  Text(
+                    "Jonathon is near by",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              _buildInfoRow(Icons.access_time, "Your Delivery Time", "12 Minutes"),
+              const SizedBox(height: 8),
+              _buildInfoRow(Icons.location_on, "Your Delivery Address", address),  // Updated address
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildInfoRow(IconData icon, String title, String value) {
+    return Row(
+      children: [
+        Icon(icon, color: Colors.green, size: 20),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+              Text(value, style: const TextStyle(color: Colors.white, fontSize: 14)),
+            ],
+          ),
         ),
-        onMapCreated: (controller) {
-          _controller.complete(controller);
-          _setMapStyle(controller);
-        },
-        polylines: Set<Polyline>.of(_polylines.values),
-        markers: _markers,
-      ),
+      ],
     );
   }
 }

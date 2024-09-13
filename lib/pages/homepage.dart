@@ -12,6 +12,8 @@ import 'package:musicapp/widgets/my_drawer.dart';
 import 'package:musicapp/widgets/my_tab_bar.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/button_navigator bar.dart';
+
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -105,6 +107,7 @@ List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
           ),
         )
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 0, onItemSelected: (int ) {  },),
     );
   }
 }
