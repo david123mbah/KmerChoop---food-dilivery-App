@@ -44,7 +44,7 @@ class MapService {
         final route = data['routes'][0]['overview_polyline']['points'];
         final polylinePoints = _decodePolyline(route);
         
-        polylines[PolylineId('route')] = Polyline(
+        polylines[const PolylineId('route')] = Polyline(
           polylineId: PolylineId('route'),
           color: Colors.green,
           width: 5,

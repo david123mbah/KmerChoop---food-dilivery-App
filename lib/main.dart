@@ -9,23 +9,27 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(); // Load environment variables
+  
+  // Load environment variables
+  await dotenv.load();
 
-  // Initialize Firebase
+  // Initialize Firebase with error handling
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    // ignore: avoid_print
-    print("Firebase initialized successfully.");
+    // Firebase initialized successfully
+    debugPrint("Firebase initialized successfully.");
   } catch (e) {
-    // ignore: avoid_print
-    print("Error initializing Firebase: $e");
+    // Error initializing Firebase
+    debugPrint("Error initializing Firebase: $e");
   }
 
+  // Run the app
   runApp(
     MultiProvider(
       providers: [
+        // Theme provider
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
         ),
@@ -48,8 +52,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
       theme: themeProvider.themeData,
+      home: const LoginOrRegister(),
     );
   }
 }
