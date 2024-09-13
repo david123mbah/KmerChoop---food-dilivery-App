@@ -64,7 +64,9 @@ class MyDrawer extends StatelessWidget {
           MydrawerTitle(
             text: "L O G O U T",
             icon: Icons.logout,
-            onTap: () {},
+            onTap: () {
+              
+            },
           ),
           const SizedBox(
             height: 25,

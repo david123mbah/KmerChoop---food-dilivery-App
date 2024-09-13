@@ -10,6 +10,7 @@ class Registerpage extends StatefulWidget {
   const Registerpage({super.key, required this.onTap});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterpageState createState() => _RegisterpageState();
 }
 
@@ -39,11 +40,13 @@ class _RegisterpageState extends State<Registerpage> {
         const SnackBar(content: Text("Registration successful!")),
       );
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const Homepage()),
       );
     } catch (e) {
       // Show an error message if registration fails
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Registration failed: $e")),
       );
@@ -61,13 +64,27 @@ class _RegisterpageState extends State<Registerpage> {
             children: [
               Image.asset(
                 "lib/assets/images/me.png",
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
               )
                   .animate()
                   .fade(duration: 1000.ms)
                   .scale(delay: 500.ms)
-                  .shimmer(delay: 1000.ms, duration: 1800.ms),
+                  .shimmer(delay: 1000.ms, duration: 1800.ms).moveX(
+                  begin: -20,
+                  end: 20,
+                  duration: const Duration(
+                      seconds: 2), // Reduced duration to 0.5 seconds
+                  curve: Curves.easeInOut,
+                )
+                .then()
+                .moveX(
+                  begin: 20,
+                  end: -20,
+                  duration: const Duration(
+                      seconds: 2), // Reduced duration to 0.5 seconds
+                  curve: Curves.easeInOut,
+                ),
               const SizedBox(height: 25),
               Text(
                 "Let's create an Account for you",

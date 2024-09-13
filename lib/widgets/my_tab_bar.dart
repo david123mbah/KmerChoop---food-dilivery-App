@@ -5,9 +5,9 @@ class MyTabBar extends StatelessWidget {
   final TabController tabController;
 
   const MyTabBar({
-    Key? key,
+    super.key,
     required this.tabController,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +16,18 @@ class MyTabBar extends StatelessWidget {
       controller: tabController,
       isScrollable: true,
       indicatorColor: Colors.transparent,
-      labelPadding: EdgeInsets.symmetric(horizontal: 4),
+      labelPadding: const EdgeInsets.symmetric(horizontal: 4),
       tabs: FoodCategories.values.map((category) {
         return Tab(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
               category.toString().split('.').last.toLowerCase(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),

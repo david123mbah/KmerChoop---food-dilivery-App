@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:musicapp/components/delivery_info%20row.dart';
+import 'package:musicapp/pages/deliverypage.dart';
 import 'package:musicapp/widgets/my_button.dart';
 
 class DeliveryInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,13 +19,15 @@ class DeliveryInfoCard extends StatelessWidget {
           Text('Track Order', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
           const SizedBox(height: 16),
           const DeliveryInfoRow(icon: Icons.access_time, text: 'Your Delivery Time\n12 Minutes'),
-          SizedBox(height: 8),
-          DeliveryInfoRow(icon: Icons.location_on, text: 'Your Delivery Address\n'),
-          SizedBox(height: 16),
+          const SizedBox(height: 8),
+          const DeliveryInfoRow(icon: Icons.location_on, text: 'Your Delivery Address\n'),
+          const SizedBox(height: 16),
           MyButton(
             text: 'Order Details',
             onTap: () {
               // Handle order details action
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const DeliveryPage()));
             },
           ),
         ],

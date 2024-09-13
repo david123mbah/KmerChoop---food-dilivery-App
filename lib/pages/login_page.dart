@@ -68,13 +68,27 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Image.asset(
                 "lib/assets/images/me.png",
-                width: 150,
-                height: 150,
+                width: 200,
+                height: 200,
               )
                   .animate()
                   .fade(duration: 1000.ms)
                   .scale(delay: 500.ms, begin: const Offset(0.8, 1.0))
-                  .shimmer(delay: 1000.ms, duration: 1800.ms),
+                  .shimmer(delay: 1000.ms, duration: 1800.ms).moveX(
+                  begin: -20,
+                  end: 20,
+                  duration: const Duration(
+                      seconds: 2), // Reduced duration to 0.5 seconds
+                  curve: Curves.easeInOut,
+                )
+                .then()
+                .moveX(
+                  begin: 20,
+                  end: -20,
+                  duration: const Duration(
+                      seconds: 2), // Reduced duration to 0.5 seconds
+                  curve: Curves.easeInOut,
+                ),
               const SizedBox(height: 45),
 
               Text(

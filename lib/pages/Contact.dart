@@ -91,7 +91,7 @@ class ContactUsPage extends StatelessWidget {
                   Icon(Icons.phone_android_rounded),
                   SizedBox(width: 8),
                   Text(
-                    'Chat with us on WhatsApp send a screenshot/photo of receipt as evidence',
+                    'Chat with us on WhatsApp ',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
