@@ -344,7 +344,7 @@ Addon(name: "Extra Fruit", price: 1000.00)
     
 
 // Dilivery Address 
- String _diliveryAddress = "Enter a location ";
+ String _diliveryAddress = "Enter a location for delivery of your food";
 
 
  
@@ -392,6 +392,19 @@ O P E R A T I O N S
   }
 }
 
+// Update Cart Item Quantity
+  void updateCartItemQuantity(CartItem cartItem, int newQuantity) {
+    int cartIndex = _cart.indexOf(cartItem);
+    if (cartIndex != -1) {
+      if (newQuantity > 0) {
+        _cart[cartIndex].quantity = newQuantity;
+      } else {
+        // If quantity is less than or equal to 0, remove the item
+        _cart.removeAt(cartIndex);
+      }
+      notifyListeners();
+    }
+  }
 
 
 
@@ -522,10 +535,11 @@ String _FormatPrice(double price) {
 // format list of addons into a string summary
  String  _formaAddons(List<Addon> addons)  {  
    return addons 
-     .map((addon) =>  "${addon.price} (${_FormatPrice(addon.price)}) XAF")
+     .map((addon) =>  "${addon.price} (${_FormatPrice(addon.price)}) ")
      .join(", ");
 }
 }
+
 
 
 

@@ -60,7 +60,7 @@ class CartPage extends StatelessWidget {
                   itemCount: userCart.length,
                   itemBuilder: (context, index) {
                     final cartItem = userCart[index];
-                    return MyCartTile(cartItem: cartItem)
+                    return MyCartTile(cartItem: cartItem, onRemove: () {  }, onAdd: () {  },)
                       .animate()
                       .fadeIn(duration: 300.ms, delay: (50 * index).ms)
                       .slideX(begin: 0.2, end: 0);

@@ -55,7 +55,6 @@ dependencies:
   google_fonts: ^5.0.0
 
 flutter_icons:
-
   android: true
   image_path: "lib/assets/images/me.png"
   min_sdk_android: 21

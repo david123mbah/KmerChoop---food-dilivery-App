@@ -68,8 +68,8 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Image.asset(
                 "lib/assets/images/me.png",
-                width: 200,
-                height: 200,
+                width: 250,
+                height: 250,
               )
                   .animate()
                   .fade(duration: 1000.ms)
@@ -92,9 +92,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 45),
 
               Text(
-                "Cameroon Kitchen 🍽",
+                "QuikBite",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 26,
                   color: Theme.of(context).colorScheme.inversePrimary,
                 ),
               )
@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   .animate()
                   .fadeIn(delay: 1500.ms, duration: 800.ms)
                   .slideX(begin: -0.2, end: 0),
-              const SizedBox(height: 15),
+              const SizedBox(height: 35),
 
               MyTextfield(
                 controller: _passwordController,
@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

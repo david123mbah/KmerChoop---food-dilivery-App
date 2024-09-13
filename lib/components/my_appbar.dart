@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:musicapp/pages/cart_page.dart';
 
 
@@ -35,7 +34,7 @@ class MyAppbar extends StatelessWidget {
           onPressed: () {
             // go to cart page
             Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const CartPage())
+              context, MaterialPageRoute(builder: (context) => CartPage())
             );
           
           

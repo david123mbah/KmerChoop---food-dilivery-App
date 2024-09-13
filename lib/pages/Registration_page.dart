@@ -36,6 +36,7 @@ class _RegisterpageState extends State<Registerpage> {
     try {
       // Call signUp method from AuthServices
       await _authServices.signUp(_emailController.text, _passwordController.text);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Registration successful!")),
       );
@@ -64,8 +65,8 @@ class _RegisterpageState extends State<Registerpage> {
             children: [
               Image.asset(
                 "lib/assets/images/me.png",
-                width: 200,
-                height: 200,
+                width: 250,
+                height: 250,
               )
                   .animate()
                   .fade(duration: 1000.ms)
@@ -104,7 +105,7 @@ class _RegisterpageState extends State<Registerpage> {
                   .animate()
                   .fadeIn(delay: 1500.ms, duration: 800.ms)
                   .slideX(begin: -0.2, end: 0),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               MyTextfield(
                 controller: _passwordController,
                 hintText: "Password",
@@ -113,7 +114,7 @@ class _RegisterpageState extends State<Registerpage> {
                   .animate()
                   .fadeIn(delay: 1800.ms, duration: 800.ms)
                   .slideX(begin: 0.2, end: 0),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               MyTextfield(
                 controller: _confirmPasswordController,
                 hintText: "Confirm Password",
@@ -147,7 +148,7 @@ class _RegisterpageState extends State<Registerpage> {
                     child: Text(
                       "Login Now",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

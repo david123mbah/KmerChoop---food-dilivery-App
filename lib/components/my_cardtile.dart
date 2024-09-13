@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:musicapp/components/quantity_selection.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:musicapp/models/cart.dart';
+import 'package:musicapp/components/quantity_selection.dart'; // Ensure this path is correct
 import 'package:musicapp/utils/restuarant.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,7 @@ class MyCartTile extends StatelessWidget {
 
   const MyCartTile({
     Key? key,
-    required this.cartItem,
+    required this.cartItem, required Null Function() onRemove, required Null Function() onAdd,
   }) : super(key: key);
 
   @override
@@ -27,41 +28,77 @@ class MyCartTile extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  // food image
+                  // Food image
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
                       cartItem.food.imagePath,
                       height: 100,
                       width: 100,
+                      fit: BoxFit.cover,
                     ),
-                  ),
+                  ).animate(
+
+                  ).fadeIn(duration: 300.ms)
+                  .slideX(begin: -0.1, end: 0, duration: 300.ms),
+                  
                   const SizedBox(width: 10),
-                  // name and price
+                  
+                  // Name and price
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // food name
-                      Text(cartItem.food.name),
-                      // food price
-                      Text("${cartItem.food.price} XAF"),
+                      Text(
+                        cartItem.food.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ).animate(
+                        
+                      ).fadeIn(duration: 300.ms)
+                      .slideX(begin: -0.1, end: 0, duration: 300.ms),
+                      
+                      Text(
+                        "${cartItem.food.price * cartItem.quantity} XAF",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      ).animate(
+                    
+                      ).fadeIn(duration: 300.ms)
+                      .slideX(begin: -0.1, end: 0, duration: 300.ms),
                     ],
                   ),
+                  
                   const Spacer(),
-                  // increment or decrement quantity
+                  
+                  // Increment or decrement quantity
                   QuantitySelector(
                     food: cartItem.food,
                     quantity: cartItem.quantity,
                     onDecrement: () {
-                      restaurant.removeFromCart(cartItem);
+                      if (cartItem.quantity > 1) {
+                        restaurant.updateCartItemQuantity(
+                          cartItem,
+                          cartItem.quantity - 1,
+                        );
+                      } else {
+                        restaurant.removeFromCart(cartItem);
+                      }
                     },
                     onIncrement: () {
-                      restaurant.addToCart(cartItem.food, cartItem.selectedAddons, cartItem.quantity);
+                      restaurant.updateCartItemQuantity(
+                        cartItem,
+                        cartItem.quantity + 1,
+                      );
                     },
                   ),
                 ],
               ),
             ),
+            
             // Addons
             SizedBox(
               height: cartItem.selectedAddons.isEmpty ? 0 : 60,
@@ -74,10 +111,8 @@ class MyCartTile extends StatelessWidget {
                           child: FilterChip(
                             label: Row(
                               children: [
-                                // addon name
                                 Text(addon.name),
                                 const SizedBox(width: 4),
-                                // addon price
                                 Text('${addon.price} XAF'),
                               ],
                             ),

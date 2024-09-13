@@ -18,7 +18,7 @@ class _PaymentPageState extends State<PaymentPage> {
   String _expiryDate = '';
   String _cardHolderName = '';
   String _cvvCode = '';
-  bool _isCvvFocused = false;
+  final bool _isCvvFocused = false;
 
   void _userTappedPay() {
     if (_formKey.currentState!.validate()) {
@@ -57,7 +57,7 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -104,7 +104,21 @@ class _PaymentPageState extends State<PaymentPage> {
                 .scale(begin: const Offset(0.8, 1.0))
                 .then()
                 .shimmer(duration: 1800.ms),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
+            Column(
+              children: [
+                Image.asset(
+                "lib/assets/images/unDraw_completed_cxyw28y.png",
+                width: 200,
+                height: 200,
+              )
+                  .animate()
+                  .fade(duration: 1000.ms)
+                  .scale(delay: 500.ms, begin: const Offset(0.8, 1.0))
+                  .shimmer(delay: 1000.ms, duration: 1800.ms),
+            
+              ],
+            )
           ],
         ),
       ),
